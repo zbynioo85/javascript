@@ -1,0 +1,30 @@
+<!--Sprawdź, czy liczba podana przez użytkownika jest pierwsza (liczba pierwsza dzieli się tylko przez 1 i samą siebie)-->
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>zad2</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" id='app'>
+        <button id="butt" type="submit" onclick="sprawdz()">sprawdz</button>
+        <p id="txt"></p>
+    </div>
+    <script>
+        function sprawdz() {
+            let liczba2;
+            let liczba = document.getElementById('app').value;
+            for (let i = 0; i <= 1; i = i + (1 / (liczba - 1))) {
+                liczba2[i] = i.toFixed(2);
+                document.getElementById('txt').innerHTML = liczba2;
+                console.log(liczba2);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

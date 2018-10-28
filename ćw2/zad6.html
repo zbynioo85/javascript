@@ -1,0 +1,29 @@
+<!--Wczytaj od użytkownika tablicę liczb (jako pojedynczy tekst - wartości oddzielane przecinkami), wypisz ją na ekranie, a następnie każdą liczbę większą od 10 podziel przez 10 i ponownie wypisz całość na ekranie.-->
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>zad2</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        const words = prompt('wpisz cyfry po ,');
+        let words2;
+        words2 = words.split(',', words.length);
+        console.log(words);
+        for (i = 0; i < words2.length; i++) {
+            if (words2[i] > 10) {
+                words2[i] = words2[i] / 10
+                document.getElementById('app').innerHTML = words2[i];
+                console.log(words2[i]);
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

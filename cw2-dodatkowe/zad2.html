@@ -1,0 +1,27 @@
+<!--Na stronie wypisujemy wartości od 1 do 100 (oddzielając je spacjami), przy czym każda wartość podzielna przez 2 jest zastąpiona słowem "Fizz", zaś każda wartość podzielna przez 3 słowem "Buzz" (liczby podzielne przez 2 i 3 są zastąpione słowem "FizzBuzz").-->
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>zad2</title>
+</head>
+
+<body>
+    <div>
+        <p id="txt"></p>
+    </div>
+    <script>
+        let number1 = 1;
+        let number2 = 0;
+        while (number1 < 100 + 1) {
+            number2 = (number1 % 2 === 0) ? (number1 % 3 === 0 ? "FizzBuzz" : "Fizz") : (number1 % 3 === 0 ? "Buzz" : number1);
+            document.getElementById("txt").innerHTML = number1;
+            console.log(number2)
+            number1++;
+        }
+
+    </script>
+</body>
+
+</html>

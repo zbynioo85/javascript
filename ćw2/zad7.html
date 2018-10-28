@@ -1,0 +1,47 @@
+<!--Gra w zgadywanie: komputer wymyśla (losuje z przedziału 1-100) liczbę, a człowiek musi ją zgadnąć. Po każdej nieprawidłowej odpowiedzi, komputer podpowiada: "mniej" lub "więcej". Gra trwa do czasu, aż użytkownik poda prawidłową odpowiedź.-->
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>zad2</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="app">
+        <button id="butt" type="submit" onclick="sprawdz()">sprawdz</button>
+        <div>
+            <p id="txt"></p>
+        </div>
+    </div>
+    <script>
+        const rzut = Math.round(Math.random() * 100) + 1;
+        console.log(rzut);
+
+        function sprawdz() {
+            let wybor;
+            wybor = document.getElementById('app').value;
+            if (wybor > rzut) {
+
+                document.getElementById("txt").innerHTML = "mniej";
+                console.log("mniej");
+            } else if (wybor < rzut) {
+
+                document.getElementById("txt").innerHTML = "wiecej";
+                console.log("wiecej");
+            } else if (wybor == rzut) {
+
+                document.getElementById("txt").innerHTML = "BRAWO!!!";
+                console.log("BRAW0!!!");
+                document.getElementById('butt').innerHTML = '<button onclick=location.reload()>jeszcze raz</button>'
+            } else {
+                document.getElementById("txt").innerHTML = "zła wartosc";
+                console.log("zła wartosc");
+            }
+        }
+
+    </script>
+</body>
+
+</html>

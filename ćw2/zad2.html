@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>zad2</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <!--    Symulator rzutów kością: rzucaj kostką (losuj liczbę od 1 do 6), dopóki nie wypadnie 6. Losowane wartości wypisuj na ekranie.-->
+    <script>
+        let rzut;
+        do {
+            rzut = Math.round(Math.random() * 5) + 1;
+            document.getElementById("app").innerHTML = rzut;
+            console.log(rzut);
+        } while (rzut < 6)
+
+    </script>
+</body>
+
+</html>

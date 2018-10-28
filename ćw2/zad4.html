@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>zad2</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <!--    Stwórz tablicę o podanym przez użytkownika rozmiarze, wypełnij ją losowymi liczbami parzystymi z przedziału od 1 do 100, a następnie wypisz całość na ekranie.-->
+    <script>
+        let number = prompt('wpisz wielkosc tablicy');
+        number = parseInt(number);
+        let tab = new Array(number);
+        for (let i = 0; i < tab.length; i++) {
+            tab[i] = Math.round(Math.random() * 100) + 1;
+            console.log(tab);
+            if (tab[i] % 2 == 0) {
+                console.log(tab);
+                document.getElementById('app').innerHTML = tab;
+            } else {
+                i--;
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!--Przeliczanie jednostek z cm na cale i z cali na cm - program prosi użytkownika o wprowadzenie pewnej wartości, następnie pyta o kierunek przeliczania, po czy wypisuje wynik.-->
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>zad2</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" id='app'>
+        <button id="butt1" type="submit" onclick="cent()">cm</button>
+        <button id="butt2" type="submit" onclick="cal()">cal</button>
+        <div>
+            <p id="txt"></p>
+        </div>
+    </div>
+    <script>
+        let number;
+
+        function cent() {
+            number = document.getElementById('app').value;
+            number = (number /= 2.54).toFixed(2);
+            document.getElementById('txt').innerHTML = number + 'cm';
+        }
+
+        function cal() {
+            number = document.getElementById('app').value;
+            number *= 2.54;
+            document.getElementById('txt').innerHTML = number + 'cal';
+        }
+
+    </script>
+</body>
+
+</html>

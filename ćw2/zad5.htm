@@ -1,0 +1,21 @@
+<!--Wczytaj zdanie od użytkownika, a następnie wypisz wszystkie słowa w odwrotnej kolejności.-->
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>zad2</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        let words = prompt('wpisz tekst');
+        let words_rev = words.split(' ').reverse();
+        console.log(words_rev);
+        document.getElementById('app').innerHTML = words_rev;
+
+    </script>
+</body>
+
+</html>

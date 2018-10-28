@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>zad2</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <!--    Wypisz wszystkie liczby od 1 do 100, które są podzielne przez 3, ale nie są podzielne przez 5.-->
+    <script>
+        let los;
+        for (let i = 1; i <= 100; i++) {
+            los = Math.round(Math.random() * 100) + 1;
+            if (los % 3 === 0 && los % 5 != 0) {
+                document.getElementById('app').innerHTML = los;
+                console.log(los);
+
+            }
+        }
+
+    </script>
+</body>
+
+</html>
