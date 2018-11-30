@@ -1,0 +1,30 @@
+li {
+    cursor: pointer;
+    padding: 5px;
+    width: 7%;
+    list-style: none;
+}
+
+li:first-child {
+    display: none;
+}
+
+.leftBtnEven {
+    background-color: lightcyan;
+}
+
+.leftBtnOdd {
+    background-color: lightblue;
+}
+
+.rightBtnEven {
+    background-color: lightyellow;
+}
+
+.rightBtnOdd {
+    background-color: lightpink;
+}
+
+.inputBorder {
+    border: 1px solid black;
+}

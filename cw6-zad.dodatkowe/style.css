@@ -1,0 +1,23 @@
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.upercase {
+    text-transform: uppercase;
+}
+
+.border {
+    border: 2px solid black;
+}
+
+.back_red {
+    background-color: #f00;
+}
+
+.hidden {
+    display: none;
+}
