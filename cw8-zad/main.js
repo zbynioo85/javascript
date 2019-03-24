@@ -26,10 +26,10 @@ $btn.onclick = function () {
     newLI.appendChild(newButton);
     const newTextBuTT = document.createTextNode('usuń');
     newButton.appendChild(newTextBuTT);
-    newButton.onclick = function () {
+    newButton.addEventListener('click', function () {
         // $ParentElement.removeChild(newLI);
         usun($ParentElement, newLI);
-    };
+    });
     NewSpan.contentEditable = true;
 
 
