@@ -45,9 +45,9 @@ Vue.component("add-new-offer", {
       newOffer: {
         name: "",
         price: 0,
-        found: false
       },
-      newOfferId: 0
+      newOfferId: 0,
+      isFound: false,
     };
   },
   props: ["offers", "auction-price", "heightsOffer"],
@@ -72,8 +72,9 @@ Vue.component("add-new-offer", {
         this.newOffer.price > this.heightsOffer
       ) {
         this.updateOfferExistenUser(this.newOffer);
+        console.log(this.isFound);
         // aktualizacja ceny istniejacej oferty
-        if (this.newOffer.found === false) {
+        if (this.isFound === false) {
           // dodanie nowej oferty
           this.offers.push({
             id: this.newOfferId,
@@ -92,14 +93,15 @@ Vue.component("add-new-offer", {
       this.newOfferId++;
     },
     updateOfferExistenUser(newOffers) {
-      this.offers.forEach(item => {
-        if (newOffers.name === item.name) {
-          item.price = newOffers.price;
-          newOffers.found = true;
+      for (let i = 0; i < this.offers.length; i++) {
+        if (newOffers.name === this.offers[i].name) {
+          this.offers[i].price = newOffers.price;
+          this.isFound = true;
+          break;
         } else {
-          newOffers.found = false;
+          this.isFound = false;
         }
-      });
+      };
     }
   }
 });
@@ -112,20 +114,16 @@ const myApp = new Vue({
         name: "",
         price: 0
       },
-      auctionsData: [
-        {
+      auctionsData: [{
+        id: 1,
+        name: "Aukcja 1",
+        price: 123,
+        offers: [{
           id: 1,
-          name: "Aukcja 1",
-          price: 123,
-          offers: [
-            {
-              id: 1,
-              name: "krystian",
-              price: 125
-            }
-          ]
-        }
-      ]
+          name: "krystian",
+          price: 125
+        }]
+      }]
     };
   },
   methods: {
