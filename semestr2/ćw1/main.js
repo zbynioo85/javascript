@@ -15,6 +15,7 @@ const vm = new Vue({
     newFriend: "",
     newlikes: 0,
     newPhoto: "",
+    NewPersons: [],
     persons: [
       {
         name: "Piotr",
@@ -81,9 +82,11 @@ const vm = new Vue({
   methods: {
     filter() {
       this.filterValue = this.filterValue.toLowerCase();
-      this.persons = this.persons.filter(
-        person => person.name.toLowerCase() === this.filterValue
+      this.NewPersons = [...this.persons];
+      this.NewPersons = this.NewPersons.filter(person =>
+        person.name.toLowerCase().includes(this.filterValue)
       );
+      this.persons = this.NewPersons;
     },
     addLikes(e) {
       e.likes++;
