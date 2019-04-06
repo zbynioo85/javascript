@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        .editing {
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <form @submit.prevent="add">
+            <input ref="input" placeholder="Title" v-model="booktitle" autofocus>
+            <input type="submit" value="Ok" :disabled="booktitle.length === 0">
+            <input v-if="editing" type="button" value="Cancel" @click="cancel">
+        </form>
+        <ul>
+            <li v-for="book in books" :class="{editing:editing==book}">
+                {{book.title}}
+                <input type="button" value="x" @click="remove(book)">
+                <input type="button" value="edit" @click="edit(book)" :disabled="editing!==null">
+            </li>
+        </ul>
+        <p v-if="books.length > 0">
+            Liczba książek: {{books.length}}
+        </p>
+        <p v-else>
+            Lista książek jest pusta! :(
+        </p>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                booktitle: "",
+                editing: null,
+                books: []
+            },
+            methods: {
+                add() {
+                    if (this.editing) {
+                        axios.put("books/" + this.editing.id, {
+                                title: this.booktitle
+                            })
+                            .then(resp => {
+                                this.editing.title = resp.data.title
+                                this.editing = null
+                            })
+                    } else {
+                        let book = {
+                            title: this.booktitle
+                        }
+                        axios.post("books", book)
+                            .then(response => this.books.push(response.data))
+                    }
+                    this.booktitle = ""
+                    this.$refs.input.focus()
+                },
+                remove(book) {
+                    if (book === this.editing) {
+                        this.cancel()
+                    }
+                    axios.delete("books/" + book.id)
+                        .then(resp => {
+                            let idx = this.books.indexOf(book)
+                            this.books.splice(idx, 1)
+                            this.$refs.input.focus()
+                        })
+                },
+                edit(book) {
+                    this.editing = book
+                    this.booktitle = book.title
+                    this.$refs.input.focus()
+                },
+                cancel() {
+                    this.editing = null
+                    this.booktitle = ""
+                    this.$refs.input.focus()
+                }
+            }
+        })
+
+        axios.get("books")
+            .then(response => vm.books = response.data)
+    </script>
+</body>
+
+</html>

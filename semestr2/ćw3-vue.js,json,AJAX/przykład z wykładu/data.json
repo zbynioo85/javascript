@@ -1,0 +1,16 @@
+{
+  "books": [
+    {
+      "title": "Solaris",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "title": "Ubik"
+    },
+    {
+      "id": 3,
+      "title": "Duna"
+    }
+  ]
+}
