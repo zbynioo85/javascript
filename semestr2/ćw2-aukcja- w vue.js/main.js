@@ -122,7 +122,7 @@ Vue.component("add-new-offer", {
   }
 });
 const myApp = new Vue({
-  el: '[data-id="myApp"]',
+  el: '[data-jscomponent="personList"]',
   data() {
     return {
       newAuctionId: 0,
@@ -130,20 +130,16 @@ const myApp = new Vue({
         name: "",
         price: 0
       },
-      auctionsData: [
-        {
+      auctionsData: [{
+        id: 1,
+        name: "Aukcja 1",
+        price: 123,
+        offers: [{
           id: 1,
-          name: "Aukcja 1",
-          price: 123,
-          offers: [
-            {
-              id: 1,
-              name: "krystian",
-              price: 125
-            }
-          ]
-        }
-      ]
+          name: "krystian",
+          price: 125
+        }]
+      }]
     };
   },
   methods: {
