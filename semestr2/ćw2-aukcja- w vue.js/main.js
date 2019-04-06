@@ -11,7 +11,7 @@ Vue.component("auction-item", {
             <ul>
                 <li v-for="offer in auction.offers">
                     osoba: {{offer.name}}, oferta: {{offer.price}},
-                    <button @click="removeOffer(offer.id)">Usuń oferte</button>
+                    <button @click="removeOffer(offer.id)" data-offer="removeOffer">Usuń oferte</button>
                 </li>
             </ul>
         </li>
@@ -31,7 +31,13 @@ Vue.component("auction-item", {
     },
     heightsOfferPrice() {
       if (this.auction.offers.length > 0) {
-        return this.auction.offers[this.auction.offers.length - 1].price;
+        let max = 0;
+        for (let i = 0; i < this.auction.offers.length; i++) {
+          if (max <= this.auction.offers[i].price) {
+            max = this.auction.offers[i].price;
+          }
+        }
+        return max;
       } else {
         return this.auction.price;
       }
@@ -44,23 +50,24 @@ Vue.component("add-new-offer", {
     return {
       newOffer: {
         name: "",
-        price: 0,
+        price: 0
       },
       newOfferId: 0,
-      isFound: false,
+      isFound: false
     };
   },
   props: ["offers", "auction-price", "heightsOffer"],
-  template: `
-    <form @submit.prevent="addNewOffer">
+  template: `<div>
+  <button @click="closeOffers">zakoncz licytacje</button>
+    <form id="formAddOffer" @submit.prevent="addNewOffer">
     <label for="offer.name">Tytuł nowej oferty</label>
     <input name="offer.name" id="offer.name"
     v-model="newOffer.name"/>
     <label for="offer-price">cenna wywoławcza</label>
     <input name="offer-price" id="offer.price" type="number"
-    min="auction-price" v-model="newOffer.price"/>
-    <button type="submit">Dodaj nową ofertę</button>
-    </form>
+    min="heightsOffer" v-model="newOffer.price"/>
+    <button type="submit" id="btnSub">Dodaj nową ofertę</button>
+    </form></div>
     
     `,
   methods: {
@@ -72,7 +79,6 @@ Vue.component("add-new-offer", {
         this.newOffer.price > this.heightsOffer
       ) {
         this.updateOfferExistenUser(this.newOffer);
-        console.log(this.isFound);
         // aktualizacja ceny istniejacej oferty
         if (this.isFound === false) {
           // dodanie nowej oferty
@@ -101,7 +107,17 @@ Vue.component("add-new-offer", {
         } else {
           this.isFound = false;
         }
-      };
+      }
+    },
+    closeOffers() {
+      document.getElementById("offer.name").disabled = true;
+      document.getElementById("offer.price").disabled = true;
+      document
+        .querySelectorAll('[data-offer="removeOffer"]')
+        .forEach(element => {
+          element.disabled = true;
+        });
+      document.getElementById("btnSub").textContent = "licytacja zakończona";
     }
   }
 });
@@ -114,16 +130,20 @@ const myApp = new Vue({
         name: "",
         price: 0
       },
-      auctionsData: [{
-        id: 1,
-        name: "Aukcja 1",
-        price: 123,
-        offers: [{
+      auctionsData: [
+        {
           id: 1,
-          name: "krystian",
-          price: 125
-        }]
-      }]
+          name: "Aukcja 1",
+          price: 123,
+          offers: [
+            {
+              id: 1,
+              name: "krystian",
+              price: 125
+            }
+          ]
+        }
+      ]
     };
   },
   methods: {
