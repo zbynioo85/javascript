@@ -38,6 +38,7 @@ const VueObj = new Vue({
             // this.editing.employee_salary = response.data.employee_salary;
             // this.editing.employee_age = response.data.employee_age;
             this.editing = null;
+            console.log(response.data);
             this.getData();
           });
       } else {
