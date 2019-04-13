@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+</head>
+
+<body>
+    <div id="EmployeeApp">
+        <section>
+            <h2>Lista pracowników:</h2>
+
+            <span>Dane zostaną odświeżone za: <span>{{ intervalTime }}</span>sec</span>
+            <div v-if="employees.length > 0" :class="{ 'is-loading': isLoading }"
+                data-text-loading="Trwa ładowanie danych...">
+                <ul>
+                    <li v-for="employee in employees" :key="employee.id" :data-id="employee.id">
+                        <span>
+                            ID: {{ employee.id }}
+                            <b>Imię:</b> <span data-id="employee-name"
+                                :contenteditable="editableItemId == employee.id">{{ employee.employee_name }}</span>,
+                            <b>Wynagrodzenie:</b> <span data-id="employee-salary"
+                                :contenteditable="editableItemId == employee.id">{{ employee.employee_salary }}</span>,
+                            <b>Wiek:</b> <span data-id="employee-age"
+                                :contenteditable="editableItemId == employee.id">{{ employee.employee_age }}</span>
+                        </span>
+                        <button
+                            @click="toggleEdit(employee.id)">{{ editableItemId == employee.id ? 'Anuluj' : 'Edytuj' }}</button>
+                        <button @click="removeData(employee.id)" v-if="editableItemId == employee.id">Usuń</button>
+                        <button @click="editNewData(employee.id, $event)"
+                            v-if="editableItemId == employee.id">Zapisz</button>
+                    </li>
+                </ul>
+            </div>
+            <div v-else>
+                <p>Brak pracowników na liście</p>
+            </div>
+
+            <button @click="getNewData">Wczytaj ręcznie nowe dane</button>
+        </section>
+        <section>
+            <h2>Dodawanie nowego pracownika:</h2>
+            <form @submit.prevent="addNewData">
+                <label for="name">Imie</label>
+                <input name="name" id="name" v-model="newEmployee.name" />
+
+                <label for="age">Wiek</label>
+                <input name="age" id="age" type="number" step="1" v-model="newEmployee.age" />
+
+                <label for="salary">Wynagrodzenie</label>
+                <input name="salary" id="salary" type="number" step=".01" v-model="newEmployee.salary" />
+
+                <button type="submit">Dodaj nowego pracownika</button>
+            </form>
+        </section>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

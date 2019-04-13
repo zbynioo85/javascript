@@ -20,9 +20,6 @@ const VueObj = new Vue({
         .catch(error => {
           // handle error
           console.log(error);
-        })
-        .then(function() {
-          // always executed
         });
     },
     add() {
@@ -34,9 +31,6 @@ const VueObj = new Vue({
             employee_age: this.ageEmployee
           })
           .then(response => {
-            // this.editing.employee_name = response.data.employee_name;
-            // this.editing.employee_salary = response.data.employee_salary;
-            // this.editing.employee_age = response.data.employee_age;
             this.editing = null;
             console.log(response.data);
             this.getData();

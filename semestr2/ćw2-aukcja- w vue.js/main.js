@@ -53,6 +53,7 @@ Vue.component("add-new-offer", {
         price: 0
       },
       newOfferId: 0,
+      isFound: false,
       isFound: false
     };
   },
@@ -79,9 +80,7 @@ Vue.component("add-new-offer", {
         this.newOffer.price > this.heightsOffer
       ) {
         this.updateOfferExistenUser(this.newOffer);
-        // aktualizacja ceny istniejacej oferty
         if (this.isFound === false) {
-          // dodanie nowej oferty
           this.offers.push({
             id: this.newOfferId,
             name: this.newOffer.name,
@@ -122,7 +121,7 @@ Vue.component("add-new-offer", {
   }
 });
 const myApp = new Vue({
-  el: '[data-jscomponent="personList"]',
+  el: '[data-id="myApp"]',
   data() {
     return {
       newAuctionId: 0,
@@ -130,16 +129,20 @@ const myApp = new Vue({
         name: "",
         price: 0
       },
-      auctionsData: [{
-        id: 1,
-        name: "Aukcja 1",
-        price: 123,
-        offers: [{
+      auctionsData: [
+        {
           id: 1,
-          name: "krystian",
-          price: 125
-        }]
-      }]
+          name: "Aukcja 1",
+          price: 123,
+          offers: [
+            {
+              id: 1,
+              name: "krystian",
+              price: 125
+            }
+          ]
+        }
+      ]
     };
   },
   methods: {

@@ -8,124 +8,30 @@
   </head>
 
   <body>
-    <main>
-      <div data-jscomponent="personList">
-        <span>sort by name</span>
-        <select v-model="sortBy">
-          <option value="a-z">a-z</option>
-          <option value="z-a">z-a</option>
-        </select>
-        <span>View:</span>
-        <select v-model="viewOption">
-          <option value="true">Full</option>
-          <option value="">Simpel</option>
-        </select>
-        <form @submit.prevent="filter" class="main-content-form">
-          <label>Enter search name:</label>
-          <input type="text" v-model="filterValue" />
-        </form>
-        <span>Enter new user datas:</span>
-        <form @submit.prevent="addPerson" class="main-content-form">
-          <input
-            type="text"
-            placeholder="Enter new name"
-            required
-            v-model="newName"
-          /><br />
-          <input
-            type="text"
-            placeholder="Enter new surname"
-            required
-            v-model="newSurname"
-          />
-          <br />
-          <input
-            type="number"
-            placeholder="Enter new age"
-            v-model="newAge"
-          /><br />
-          <input
-            type="email"
-            placeholder="Enter new email"
-            required
-            v-model="newEmail"
-          /><br />
-          <input
-            type="text"
-            v-model="newStreet"
-            required
-            placeholder="Enter new street"
-          />
-          <br />
-          <input
-            type="text"
-            v-model="newZipcode"
-            required
-            placeholder="Enter new Zip code"
-          />
-          <br />
-          <input
-            type="text"
-            v-model="newCity"
-            required
-            placeholder="Enter new city"
-          />
-          <br />
-          <label for="">friend:</label>
-          <input type="checkbox" v-model="newFriend" />
-          <br />
-          <input
-            type="text"
-            v-model="newPhoto"
-            placeholder="Enter link to photo"
-          />
-          <br />
-          <input
-            type="text"
-            v-model="newIntreste"
-            placeholder="Enter new intreste"
-          />
-          <br />
-          <button>Add</button>
-        </form>
-
-        <ul class="main-content-ul">
-          <li v-for="person in sortData" class="main-content-li">
-            <img v-bind:src="person.photo" /> <br />
-            name:{{ person.name }} <br />
-            surname:{{ person.surname }} <br />
-            <template v-if="viewOption">
-              age:{{ person.age }} <br />
-              email:{{ person.email }} <br />
-              address:
-              <ul>
-                <li v-for="item in person.address">
-                  {{ item }}
-                </li>
-              </ul>
-              friend: <input type="checkbox" v-model="person.friend" /> <br />
-              likes: {{ person.likes }}
-              <button @click="addLikes(person)">+</button>
-              <button @click="subtractLikes(person)">-</button>
-              <br />
-
-              interests:
-              <ul>
-                <li v-for="item in person.interests">
-                  {{ item }}
-                </li>
-              </ul>
-
-              <input
-                type="text"
-                v-model.lazy="person.interests[person.interests.length]"
-                placeholder="enter a new interest"
-              /><br /><br />
-            </template>
-          </li>
+    <div data-id="myApp">
+      <section v-if="auctionsData.length>0">
+        <h2>lista aktywnych aukcjii</h2>
+        <ul>
+          <auction-item
+            v-for="auctionData in auctionsData"
+            :auction="auctionData"
+            :key="auctionData.id"
+            @close-auction="removeAuction"
+          >
+          </auction-item>
         </ul>
-      </div>
-    </main>
+      </section>
+      <section>
+        <h2>dodawnie nowej aukcji</h2>
+        <form @submit.prevent="addNewAuction">
+          <label for="nameOfAuction">nazwa pzedmiotu</label>
+          <input type="text" id="nameOfAuction" v-model="newAuction.name" />
+          <label for="auctionPrice">Cena wywoławacza</label>
+          <input type="text" id="auctionPrice" v-model="newAuction.price" />
+          <button type="submit">Dodaj nową aukcjie</button>
+        </form>
+      </section>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="main.js"></script>
   </body>
