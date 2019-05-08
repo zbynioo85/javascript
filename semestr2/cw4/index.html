@@ -1,39 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Dane z serwera</title>
-</head>
+    <link rel="stylesheet" href="styl.css" />
+  </head>
 
-<body>
+  <body>
     <div data-vue="mainVue">
-        <span>sort by name</span>
-        <select v-model="sortBy">
-            <option value="a-z">a-z</option>
-            <option value="z-a">z-a</option>
-        </select>
-        <li v-for="employee in sortData">
-            <span>name:{{ employee.employee_name }} |</span>
-            <span>salary:{{ employee.employee_salary }}</span>
-            <span>age:{{ employee.employee_age }}</span>
-            <span>id:{{ employee.id }}</span>
-            <input type="button" value="x" @click="remove(employee)">
-            <input type="button" value="edit" @click="edit(employee)" :disabled="editing!==null">
+      <span>sort by name</span>
+      <select v-model="sortBy">
+        <option value="">---</option>
+        <option value="a-z">a-z</option>
+        <option value="z-a">z-a</option>
+      </select>
+      <template v-if="!isNaN(details)">
+        <h3>Szczegóły elementu {{ details }}</h3>
+        <h1>{{ employees[details] }}</h1>
+        <a href="#">lista</a>
+      </template>
+      <template v-else>
+        <li v-for="(employee,index) in filteredList" :href="'#'+index">
+          <span>name:{{ employee.employee_name }} |</span>
+          <span>salary:{{ employee.employee_salary }}</span>
+          <span>age:{{ employee.employee_age }}</span>
+          <span>id:{{ employee.id }}</span>
+          <input type="button" value="x" @click="remove(employee)" />
+          <input
+            type="button"
+            value="edit"
+            @click="edit(employee)"
+            :disabled="editing!==null"
+          />
+          <button @click.prevent="detailsItem(index)">Szczegóły</button>
         </li>
-        <form @submit.prevent="add">
-            <input ref="input" placeholder="name" v-model="nameEmployee" /><br />
-            <input ref="input" placeholder="salary" v-model=" salaryEmployee" /><br />
-            <input ref="input" placeholder="age" v-model=" ageEmployee" /><br />
-            <button>wyslij</button>
-        </form>
+      </template>
+      <form @submit.prevent="add">
+        <input ref="input" placeholder="name" v-model="nameEmployee" /><br />
+        <input
+          ref="input"
+          placeholder="salary"
+          v-model=" salaryEmployee"
+        /><br />
+        <input ref="input" placeholder="age" v-model=" ageEmployee" /><br />
+        <button>wyslij</button>
+      </form>
+      <h2>strona {{ page }}</h2>
+      <button @click.prevent="firstpage">first</button>
+      <button @click.prevent="prevpage" :disabled="isDisabledPrev">prev</button>
+      <button @click.prevent="nextpage" :disabled="isDisabledNext">next</button>
+      <button @click.prevent="lastpage">last</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>
-</body>
-
+  </body>
 </html>
