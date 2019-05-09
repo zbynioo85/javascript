@@ -36,22 +36,27 @@
           />
           <button @click.prevent="detailsItem(index)">Szczegóły</button>
         </li>
+
+        <form @submit.prevent="add">
+          <input ref="input" placeholder="name" v-model="nameEmployee" /><br />
+          <input
+            ref="input"
+            placeholder="salary"
+            v-model=" salaryEmployee"
+          /><br />
+          <input ref="input" placeholder="age" v-model=" ageEmployee" /><br />
+          <button>wyslij</button>
+        </form>
+        <h2>strona {{ page }}</h2>
+        <button @click.prevent="firstpage">first</button>
+        <button @click.prevent="prevpage" :disabled="isDisabledPrev">
+          prev
+        </button>
+        <button @click.prevent="nextpage" :disabled="isDisabledNext">
+          next
+        </button>
+        <button @click.prevent="lastpage">last</button>
       </template>
-      <form @submit.prevent="add">
-        <input ref="input" placeholder="name" v-model="nameEmployee" /><br />
-        <input
-          ref="input"
-          placeholder="salary"
-          v-model=" salaryEmployee"
-        /><br />
-        <input ref="input" placeholder="age" v-model=" ageEmployee" /><br />
-        <button>wyslij</button>
-      </form>
-      <h2>strona {{ page }}</h2>
-      <button @click.prevent="firstpage">first</button>
-      <button @click.prevent="prevpage" :disabled="isDisabledPrev">prev</button>
-      <button @click.prevent="nextpage" :disabled="isDisabledNext">next</button>
-      <button @click.prevent="lastpage">last</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
