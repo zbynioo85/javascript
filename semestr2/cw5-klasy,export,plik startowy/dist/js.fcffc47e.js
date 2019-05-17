@@ -8347,7 +8347,7 @@ function (_Vehicle) {
   }, {
     key: "generateKilometers",
     value: function generateKilometers() {
-      _get(_getPrototypeOf(Motorbike.prototype), "generateKilometers", this).call(this);
+      return _get(_getPrototypeOf(Motorbike.prototype), "generateKilometers", this).call(this);
     }
   }, {
     key: "PrintMotor",
@@ -8588,7 +8588,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51525" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50321" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -18,7 +18,7 @@ class Motorbike extends Vehicle {
 		return super.printKilometers();
 	}
 	generateKilometers() {
-		super.generateKilometers();
+		return super.generateKilometers();
 	}
 	PrintMotor() {
 		return 'Pojazd jest jednosladem'
