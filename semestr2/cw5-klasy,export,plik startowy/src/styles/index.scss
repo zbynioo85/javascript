@@ -1,0 +1,19 @@
+@import 'shared/variables';
+@import 'shared/url';
+
+
+body {
+	color: black;
+	font-size: 18px;
+}
+
+.vehicle {
+	background-color: #ddd;
+	border: 2px black solid;
+}
+
+.motorbike {
+	color: white;
+	background-color: #000;
+	border: 2px rgb(238, 238, 15) solid;
+}
