@@ -8180,9 +8180,10 @@ function () {
       this.listClient.forEach(function (item) {
         console.log(item);
         console.log(item.name);
-        console.log(item.surname, item.regon); // item.forEach(function (item2) {
-        // 	console.log(item2);
+        console.log(item.surname, item.regon); // item.acountLis.forEach(function (item2) {
+        // 	console.log(item2.printAcount());
         // })
+        // item.acountLis[0].printAcount();
       });
     }
   }]);
@@ -8566,7 +8567,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50198" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52135" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

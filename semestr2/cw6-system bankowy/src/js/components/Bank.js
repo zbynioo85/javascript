@@ -11,9 +11,10 @@ class Bank {
 			console.log(item);
 			console.log(item.name);
 			console.log(item.surname,item.regon);
-			// item.forEach(function (item2) {
-			// 	console.log(item2);
+			// item.acountLis.forEach(function (item2) {
+			// 	console.log(item2.printAcount());
 			// })
+			// item.acountLis[0].printAcount();
 		})
 	}
 
