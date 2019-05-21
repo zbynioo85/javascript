@@ -7,14 +7,12 @@ class Bank {
 		this.listClient.push(client);
 	}
 	print() {
+		console.log('witaj w ' + this.name)
+		console.log('lista klientów: ');
 		this.listClient.forEach(function (item) {
 			console.log(item);
-			console.log(item.name);
-			console.log(item.surname,item.regon);
-			// item.acountLis.forEach(function (item2) {
-			// 	console.log(item2.printAcount());
-			// })
-			// item.acountLis[0].printAcount();
+			item.printClient();
+			console.log("____________________________________")
 		})
 	}
 

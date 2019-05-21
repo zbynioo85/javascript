@@ -8177,13 +8177,12 @@ function () {
   }, {
     key: "print",
     value: function print() {
+      console.log('witaj w ' + this.name);
+      console.log('lista klientów: ');
       this.listClient.forEach(function (item) {
         console.log(item);
-        console.log(item.name);
-        console.log(item.surname, item.regon); // item.acountLis.forEach(function (item2) {
-        // 	console.log(item2.printAcount());
-        // })
-        // item.acountLis[0].printAcount();
+        item.printClient();
+        console.log("____________________________________");
       });
     }
   }]);
@@ -8226,6 +8225,15 @@ function () {
     value: function addAcount(acount) {
       this.acountLis.push(acount);
     }
+  }, {
+    key: "printClient",
+    value: function printClient() {
+      console.log('imię: ' + this.name);
+      console.log('Regon: ' + this.regon);
+      this.acountLis.forEach(function (item) {
+        item.printAcount();
+      });
+    }
   }]);
 
   return Company;
@@ -8265,6 +8273,15 @@ function () {
     key: "addAcount",
     value: function addAcount(acount) {
       this.acountLis.push(acount);
+    }
+  }, {
+    key: "printClient",
+    value: function printClient() {
+      console.log('imię: ' + this.name);
+      console.log('nazwisko: ' + this.surname);
+      this.acountLis.forEach(function (item) {
+        item.printAcount();
+      });
     }
   }]);
 
@@ -8567,7 +8584,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52135" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50086" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
