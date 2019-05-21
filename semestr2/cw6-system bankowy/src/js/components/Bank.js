@@ -10,7 +10,6 @@ class Bank {
 		console.log('witaj w ' + this.name)
 		console.log('lista klientów: ');
 		this.listClient.forEach(function (item) {
-			console.log(item);
 			item.printClient();
 			console.log("____________________________________")
 		})

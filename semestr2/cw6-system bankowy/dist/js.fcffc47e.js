@@ -8180,7 +8180,6 @@ function () {
       console.log('witaj w ' + this.name);
       console.log('lista klientów: ');
       this.listClient.forEach(function (item) {
-        console.log(item);
         item.printClient();
         console.log("____________________________________");
       });
@@ -8445,69 +8444,6 @@ var _CurencyAcount = _interopRequireDefault(require("./components/CurencyAcount"
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// const DataJs = document.querySelector('[data-js="js"]');
-// const elementVehicel = document.createElement("div");
-// const elementMotorbike = document.createElement("div");
-// // let buttonEle = document.querySelectorAll('button');
-// // console.log(buttonEle);
-// const VehicleTest = new Vehicle("samochód", "czerwony", "benzynowy");
-// VehicleTest.generateKilometers();
-// DataJs.appendChild(
-// 	elementVehicel
-// ).innerHTML = `<p>${VehicleTest.printVehicleType()}</br>${VehicleTest.printColor()}<br>${VehicleTest.printEngineType()}<br>${VehicleTest.printKilometers()}</p>`;
-// elementVehicel.classList.add("vehicle");
-// addButton(".vehicle");
-// // VehicleTest.printVehicleType();
-// // VehicleTest.printColor();
-// // VehicleTest.printEngineType();
-// // VehicleTest.printKilometers();
-// const Motor = new Motorbike("motor", "niebieski");
-// Motor.generateKilometers();
-// DataJs.appendChild(
-// 	elementMotorbike
-// ).innerHTML = `<p>${Motor.printVehicleType()}</br>${Motor.printColor()}<br>${Motor.printEngineType()}<br>${Motor.printKilometers()}<br>${Motor.PrintMotor()}</p>`;
-// elementMotorbike.classList.add("motorbike");
-// addButton(".motorbike");
-// Motor.printVehicleType();
-// Motor.printEngineType();
-// Motor.printKilometers();
-// Motor.printColor();
-// Motor.PrintMotor();
-// const Carr = new Car("samochód", "czerwony", "diesel");
-// Carr.printVehicleType();
-// Carr.printEngineType();
-// Carr.generateKilometers();
-// Carr.printKilometers();
-// Carr.printColor();
-// Carr.printRed();
-// const Garage1 = new Garage();
-// Garage1.add(VehicleTest);
-// Garage1.add(Motor);
-// let buttonEle = document.querySelectorAll("button");
-// function addButton(ele) {
-// 	const elButton = document.createElement("button");
-// 	document.querySelector(ele).appendChild(elButton);
-// 	elButton.textContent = "usun pojazd";
-// }
-// buttonEle.forEach(function (item) {
-// 	item.addEventListener("click", function () {
-// 		this.parentElement.remove(this.parentElement);
-// 		Garage1.remove(item);
-// 	});
-// });
-// const ac = new Acount(1000);
-// ac.printAcount();
-// ac.deposit(1000);
-// ac.deposit(2000.5698);
-// ac.printAcount();
-// const vip = new AcountVip(0, 3);
-// vip.deposit(100);
-// vip.printAcount();
-// vip.withdraw(10);
-// vip.printAcount();
-// const curA = new CurencyAcount(0, '$')
-// curA.deposit(300);
-// curA.printAcount();
 var Bankk = new _Bank.default(); // klienci:
 
 var cPerson1 = new _Person.default('klient', '1');
@@ -8543,12 +8479,38 @@ cCompany2.addAcount(acount3);
 cCompany2.addAcount(acountVip1);
 cCompany3.addAcount(acountVip3);
 cCompany3.addAcount(acountCurency2); // operacje:
-// wplac po 100 na normalne konta:
+// wplac losow sume na kazde konto:
 
+console.log('wplata po 200 na kazde konto');
+acount1.deposit(200);
+acountCurency1.deposit(200);
+acountVip2.deposit(200);
+acountCurency3.deposit(200);
+acount2.deposit(200);
+acount3.deposit(200);
+acountVip1.deposit(200);
+acountVip3.deposit(200);
+acountCurency2.deposit(200);
+Bankk.print(); // wplac po 100 na normalne konta:
+
+console.log('wplata po 100 na zwykłe pierwsze konta osoby');
 acount1.deposit(100);
 acount2.deposit(100);
-acount2.deposit(100); // console.log(Bankk.listClient);
+acount2.deposit(100);
+Bankk.print(); // wpłać 50 na każde konto VIP
 
+console.log('wpłać 50 na każde konto VIP');
+acountVip1.deposit(50);
+acountVip2.deposit(50);
+acountVip3.deposit(50);
+Bankk.print();
+console.log('wypłać 25 z kont walutowych prowadzonych w Euro');
+acountCurency2.withdraw(25);
+acountCurency3.withdraw(25);
+Bankk.print();
+console.log('wypłać 200 z VIPowych kont każdej Firmy, o ile stan tego konta wynosi co najmniej 200');
+acountVip1.withdraw(200);
+acountVip3.withdraw(200);
 Bankk.print();
 },{"./components/Acount.js":"../js/components/Acount.js","./components/Bank.js":"../js/components/Bank.js","./components/Company.js":"../js/components/Company.js","./components/Person.js":"../js/components/Person.js","./components/AcountVip.js":"../js/components/AcountVip.js","./components/CurencyAcount":"../js/components/CurencyAcount.js"}],"../js/index.js":[function(require,module,exports) {
 "use strict";
@@ -8584,7 +8546,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50086" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50889" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
