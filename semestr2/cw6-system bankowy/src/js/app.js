@@ -108,7 +108,7 @@ cCompany2.addAcount(acountVip1);
 cCompany3.addAcount(acountVip3);
 cCompany3.addAcount(acountCurency2);
 // operacje:
-// wplac po 100 na normalne kont:
+// wplac po 100 na normalne konta:
 acount1.deposit(100);
 acount2.deposit(100);
 acount2.deposit(100);
