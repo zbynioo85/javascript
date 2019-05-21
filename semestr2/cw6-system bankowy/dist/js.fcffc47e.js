@@ -8349,7 +8349,7 @@ function (_Acount) {
   }, {
     key: "withdraw",
     value: function withdraw(number) {
-      return this.summary = _get(_getPrototypeOf(AcountVip.prototype), "deposit", this).call(this, number) - this.commision;
+      return this.summary = _get(_getPrototypeOf(AcountVip.prototype), "withdraw", this).call(this, number) - this.commision;
     }
   }, {
     key: "printAcount",
