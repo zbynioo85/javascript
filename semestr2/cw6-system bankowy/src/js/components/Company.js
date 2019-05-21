@@ -1,8 +1,11 @@
-import Client from"./Client.js";
-class Company extends Client{
-constructor(name="",regon=""){
-    this.name=name;
-    this.regon=regon;
-}
+class Company {
+	constructor(name = "", regon = "") {
+		this.name = name;
+		this.regon = regon;
+		this.acountLis = [];
+	}
+	addAcount(acount) {
+		this.acountLis.push(acount)
+	}
 }
 export default Company;

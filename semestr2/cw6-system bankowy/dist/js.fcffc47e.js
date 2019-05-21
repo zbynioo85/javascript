@@ -8094,39 +8094,13 @@ define(String.prototype, "padRight", "".padEnd);
 "pop,reverse,shift,keys,values,entries,indexOf,every,some,forEach,map,filter,find,findIndex,includes,join,slice,concat,push,splice,unshift,sort,lastIndexOf,reduce,reduceRight,copyWithin,fill".split(",").forEach(function (key) {
   [][key] && define(Array, key, Function.call.bind([][key]));
 });
-},{"core-js/shim":"../../node_modules/core-js/shim.js","regenerator-runtime/runtime":"../../node_modules/babel-polyfill/node_modules/regenerator-runtime/runtime.js","core-js/fn/regexp/escape":"../../node_modules/core-js/fn/regexp/escape.js"}],"../js/components/Client.js":[function(require,module,exports) {
+},{"core-js/shim":"../../node_modules/core-js/shim.js","regenerator-runtime/runtime":"../../node_modules/babel-polyfill/node_modules/regenerator-runtime/runtime.js","core-js/fn/regexp/escape":"../../node_modules/core-js/fn/regexp/escape.js"}],"../js/components/Acount.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Client = function Client() {
-  var acountList = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-
-  _classCallCheck(this, Client);
-
-  this.acountList = acountList;
-};
-
-var _default = Client;
-exports.default = _default;
-},{}],"../js/components/Acount.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _Client2 = _interopRequireDefault(require("./Client.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -8134,55 +8108,42 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 var Acount =
 /*#__PURE__*/
-function (_Client) {
-  _inherits(Acount, _Client);
-
-  function Acount(summary) {
-    var _this;
+function () {
+  function Acount() {
+    var summary = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
     _classCallCheck(this, Acount);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Acount).call(this));
-    _this.summary = summary;
-    return _this;
+    this.summary = summary;
   }
 
   _createClass(Acount, [{
     key: "deposit",
     value: function deposit(number) {
-      this.summary += number;
+      return this.summary += number;
     }
   }, {
     key: "withdraw",
     value: function withdraw(number) {
-      this.summary -= number;
+      return this.summary -= number;
     }
   }, {
     key: "printAcount",
     value: function printAcount() {
-      this.summary.toString();
-      console.log(this.summary.toString());
+      var text = 'stan konta standard : ' + this.summary.toFixed(2).toString();
+      console.log(text);
+      return text;
     }
   }]);
 
   return Acount;
-}(_Client2.default);
+}();
 
 var _default = Acount;
 exports.default = _default;
-},{"./Client.js":"../js/components/Client.js"}],"../js/components/Bank.js":[function(require,module,exports) {
+},{}],"../js/components/Bank.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8201,7 +8162,6 @@ var Bank =
 function () {
   function Bank() {
     var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Mbank';
-    var listClient = arguments.length > 1 ? arguments[1] : undefined;
 
     _classCallCheck(this, Bank);
 
@@ -8229,46 +8189,39 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _Client2 = _interopRequireDefault(require("./Client.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 var Company =
 /*#__PURE__*/
-function (_Client) {
-  _inherits(Company, _Client);
-
+function () {
   function Company() {
-    var _this;
-
     var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
     var regon = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
 
     _classCallCheck(this, Company);
 
-    _this.name = name;
-    _this.regon = regon;
-    return _possibleConstructorReturn(_this);
+    this.name = name;
+    this.regon = regon;
+    this.acountLis = [];
   }
 
+  _createClass(Company, [{
+    key: "addAcount",
+    value: function addAcount(acount) {
+      this.acountLis.push(acount);
+    }
+  }]);
+
   return Company;
-}(_Client2.default);
+}();
 
 var _default = Company;
 exports.default = _default;
-},{"./Client.js":"../js/components/Client.js"}],"../js/components/Person.js":[function(require,module,exports) {
+},{}],"../js/components/Person.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8276,7 +8229,47 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _Client2 = _interopRequireDefault(require("./Client.js"));
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Person =
+/*#__PURE__*/
+function () {
+  function Person() {
+    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    var surname = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+    _classCallCheck(this, Person);
+
+    this.name = name;
+    this.surname = surname;
+    this.acountLis = [];
+  }
+
+  _createClass(Person, [{
+    key: "addAcount",
+    value: function addAcount(acount) {
+      this.acountLis.push(acount);
+    }
+  }]);
+
+  return Person;
+}();
+
+var _default = Person;
+exports.default = _default;
+},{}],"../js/components/AcountVip.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Acount2 = _interopRequireDefault(require("./Acount.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8284,49 +8277,142 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var Person =
+var AcountVip =
 /*#__PURE__*/
-function (_Client) {
-  _inherits(Person, _Client);
+function (_Acount) {
+  _inherits(AcountVip, _Acount);
 
-  function Person() {
+  function AcountVip() {
     var _this;
 
-    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-    var surname = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+    var summary = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    var commision = arguments.length > 1 ? arguments[1] : undefined;
 
-    _classCallCheck(this, Person);
+    _classCallCheck(this, AcountVip);
 
-    _this.name = name;
-    _this.surname = surname;
-    return _possibleConstructorReturn(_this);
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AcountVip).call(this, summary));
+    _this.commision = commision;
+    return _this;
   }
 
-  return Person;
-}(_Client2.default);
+  _createClass(AcountVip, [{
+    key: "deposit",
+    value: function deposit(number) {
+      return this.summary = _get(_getPrototypeOf(AcountVip.prototype), "deposit", this).call(this, number) - this.commision;
+    }
+  }, {
+    key: "withdraw",
+    value: function withdraw(number) {
+      return this.summary = _get(_getPrototypeOf(AcountVip.prototype), "deposit", this).call(this, number) - this.commision;
+    }
+  }, {
+    key: "printAcount",
+    value: function printAcount() {
+      var text = 'stan konta VIP : ' + this.summary.toFixed(2).toString();
+      console.log(text);
+      return text;
+    }
+  }]);
 
-var _default = Person;
+  return AcountVip;
+}(_Acount2.default);
+
+var _default = AcountVip;
 exports.default = _default;
-},{"./Client.js":"../js/components/Client.js"}],"../js/app.js":[function(require,module,exports) {
+},{"./Acount.js":"../js/components/Acount.js"}],"../js/components/CurencyAcount.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Acount2 = _interopRequireDefault(require("./Acount.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var CurencyAcount =
+/*#__PURE__*/
+function (_Acount) {
+  _inherits(CurencyAcount, _Acount);
+
+  function CurencyAcount() {
+    var _this;
+
+    var summary = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    var symbol = arguments.length > 1 ? arguments[1] : undefined;
+
+    _classCallCheck(this, CurencyAcount);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CurencyAcount).call(this, summary));
+    _this.symbol = symbol;
+    return _this;
+  }
+
+  _createClass(CurencyAcount, [{
+    key: "printAcount",
+    value: function printAcount() {
+      var text = 'stan konta walutowego : ' + this.summary.toFixed(2).toString() + this.symbol;
+      console.log(text);
+      return text;
+    }
+  }]);
+
+  return CurencyAcount;
+}(_Acount2.default);
+
+var _default = CurencyAcount;
+exports.default = _default;
+},{"./Acount.js":"../js/components/Acount.js"}],"../js/app.js":[function(require,module,exports) {
 "use strict";
 
 var _Acount = _interopRequireDefault(require("./components/Acount.js"));
 
 var _Bank = _interopRequireDefault(require("./components/Bank.js"));
 
-var _Client = _interopRequireDefault(require("./components/Client.js"));
-
 var _Company = _interopRequireDefault(require("./components/Company.js"));
 
 var _Person = _interopRequireDefault(require("./components/Person.js"));
+
+var _AcountVip = _interopRequireDefault(require("./components/AcountVip.js"));
+
+var _CurencyAcount = _interopRequireDefault(require("./components/CurencyAcount"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8380,11 +8466,61 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // 		Garage1.remove(item);
 // 	});
 // });
-var ac = new _Acount.default(1000);
-ac.printAcount();
-ac.deposit(1000);
-ac.printAcount();
-},{"./components/Acount.js":"../js/components/Acount.js","./components/Bank.js":"../js/components/Bank.js","./components/Client.js":"../js/components/Client.js","./components/Company.js":"../js/components/Company.js","./components/Person.js":"../js/components/Person.js"}],"../js/index.js":[function(require,module,exports) {
+// const ac = new Acount(1000);
+// ac.printAcount();
+// ac.deposit(1000);
+// ac.deposit(2000.5698);
+// ac.printAcount();
+// const vip = new AcountVip(0, 3);
+// vip.deposit(100);
+// vip.printAcount();
+// vip.withdraw(10);
+// vip.printAcount();
+// const curA = new CurencyAcount(0, '$')
+// curA.deposit(300);
+// curA.printAcount();
+var Bankk = new _Bank.default(); // klienci:
+
+var cPerson1 = new _Person.default('klient', '1');
+var cPerson2 = new _Person.default('klient', '2');
+var cPerson3 = new _Person.default('klient', '3');
+var cCompany1 = new _Company.default('firma', '1');
+var cCompany2 = new _Company.default('firma', '2');
+var cCompany3 = new _Company.default('firma', '3'); // konta:
+
+var acount1 = new _Acount.default(0);
+var acount2 = new _Acount.default(0);
+var acount3 = new _Acount.default(0);
+var acountVip1 = new _AcountVip.default(0, 2);
+var acountVip2 = new _AcountVip.default(0, 2);
+var acountVip3 = new _AcountVip.default(0, 2);
+var acountCurency1 = new _CurencyAcount.default(0, "$");
+var acountCurency2 = new _CurencyAcount.default(0, "€");
+var acountCurency3 = new _CurencyAcount.default(0, "€"); // operacje dodadnie klientów do banku:
+
+Bankk.add(cPerson1);
+Bankk.add(cPerson2);
+Bankk.add(cPerson3);
+Bankk.add(cCompany1);
+Bankk.add(cCompany2);
+Bankk.add(cCompany3); // dodanie kont do klientów
+
+cPerson1.addAcount(acount1);
+cPerson1.addAcount(acountCurency1);
+cPerson2.addAcount(acountVip2);
+cPerson3.addAcount(acountCurency3);
+cCompany1.addAcount(acount2);
+cCompany2.addAcount(acount3);
+cCompany2.addAcount(acountVip1);
+cCompany3.addAcount(acountVip3);
+cCompany3.addAcount(acountCurency2); // operacje:
+// wplac po 100 na normalne kont:
+
+acount1.deposit(100);
+acount2.deposit(100);
+acount2.deposit(100);
+console.log(Bankk.listClient);
+},{"./components/Acount.js":"../js/components/Acount.js","./components/Bank.js":"../js/components/Bank.js","./components/Company.js":"../js/components/Company.js","./components/Person.js":"../js/components/Person.js","./components/AcountVip.js":"../js/components/AcountVip.js","./components/CurencyAcount":"../js/components/CurencyAcount.js"}],"../js/index.js":[function(require,module,exports) {
 "use strict";
 
 require("babel-polyfill");
@@ -8418,7 +8554,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51199" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56716" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

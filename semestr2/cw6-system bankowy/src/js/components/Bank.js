@@ -1,10 +1,10 @@
 class Bank {
-	constructor(name='Mbank',listClient) {
-	 this.name=name;
-this.listClient=[];
+	constructor(name = 'Mbank') {
+		this.name = name;
+		this.listClient = [];
 	}
-	add(client){
-this.listClient.push(client);
+	add(client) {
+		this.listClient.push(client);
 	}
 
 }
