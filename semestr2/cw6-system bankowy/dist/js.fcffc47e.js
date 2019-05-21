@@ -8174,6 +8174,17 @@ function () {
     value: function add(client) {
       this.listClient.push(client);
     }
+  }, {
+    key: "print",
+    value: function print() {
+      this.listClient.forEach(function (item) {
+        console.log(item);
+        console.log(item.name);
+        console.log(item.surname, item.regon); // item.forEach(function (item2) {
+        // 	console.log(item2);
+        // })
+      });
+    }
   }]);
 
   return Bank;
@@ -8514,12 +8525,13 @@ cCompany2.addAcount(acount3);
 cCompany2.addAcount(acountVip1);
 cCompany3.addAcount(acountVip3);
 cCompany3.addAcount(acountCurency2); // operacje:
-// wplac po 100 na normalne kont:
+// wplac po 100 na normalne konta:
 
 acount1.deposit(100);
 acount2.deposit(100);
-acount2.deposit(100);
-console.log(Bankk.listClient);
+acount2.deposit(100); // console.log(Bankk.listClient);
+
+Bankk.print();
 },{"./components/Acount.js":"../js/components/Acount.js","./components/Bank.js":"../js/components/Bank.js","./components/Company.js":"../js/components/Company.js","./components/Person.js":"../js/components/Person.js","./components/AcountVip.js":"../js/components/AcountVip.js","./components/CurencyAcount":"../js/components/CurencyAcount.js"}],"../js/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -8554,7 +8566,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56716" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50198" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
