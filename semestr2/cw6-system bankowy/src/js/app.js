@@ -113,3 +113,4 @@ acount1.deposit(100);
 acount2.deposit(100);
 acount2.deposit(100);
 console.log(Bankk.listClient);
+acount2.deposit(200);
