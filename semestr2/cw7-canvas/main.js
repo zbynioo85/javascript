@@ -1,31 +1,61 @@
-function setTime(){
-    return moment().format('h:mm:ss a');
-}
+import DigitClock from './components/digitalClock.js'
+import AnalogClock from './components/analogClock.js'
 const canvas = document.querySelector('.myCanvas');
-let ctx = canvas.getContext("2d");
-console.log(setTime());
-setInterval(function(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillText(setTime(),50,50);
+const clock = new DigitClock(canvas);
+setInterval(function () {
+    clock.Timeinterval()
+}, 1000);
+// zegar analogowy
 
-},1000);
+
+
+
+
 const canvas2 = document.querySelector('.myCanvas2');
 let ctx2 = canvas2.getContext("2d");
-const tab=[12,90,54,20,90,10,30,56,98,4];
-let przes=10;
-function drawLinie(heightRect,przes){
-    
-   ctx2.fillRect((500-przes), (200-heightRect), 10, heightRect);
+let przes = 20;
+
+function drawLinie(heightRect, przes) {
+
+    ctx2.fillRect((490), (200 - heightRect), 10, heightRect);
+    //    ctx2.translate(10, 0);
+
 }
-let i=0;
+
+function move() {
+    ctx2.translate(-10, 0);
+}
+let i = 0;
 // drawLinie(tab[2],przes);
-setInterval(function(){
+setInterval(function () {
+    let rand = Math.floor(Math.random() * 500)
 
-    ctx2.clearRect(0, 0, canvas.width, canvas.height);
-    
-    drawLinie(tab[i],przes);
+
+
+
     i++;
-    przes+=10;
+    przes += 10;
+
+    drawLinie(rand, przes);
+    move()
+
+    // move();
+    //  ctx2.translate(-30,0)
+    // if(przes>=500){
+    //     ctx2.translate(20, 0);
+    //     drawLinie(rand,przes);
 
 
-},1000);
+
+}, 1000);
+const canvas3 = document.querySelector('.myCanvas3');
+const Aclock = new AnalogClock(canvas3);
+canvas3.getContext("2d").translate(canvas3.height / 2, canvas3.height / 2);
+setInterval(function () {
+    canvas3.getContext("2d").beginPath();
+    Aclock.drawClock()
+    Notification.requestPermission().then(function (result) {
+       let notification= new Notification("zegar działa");
+       setTimeout(notification.close.bind(notification), 1000);
+    })
+}, 1000);
