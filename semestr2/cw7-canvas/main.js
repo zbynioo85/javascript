@@ -51,6 +51,8 @@ setInterval(function () {
 }, 1000);
 // paint
 const canvas4 = document.querySelector('.myCanvas4');
+const canvas5 = document.querySelector('.myCanvas5');
 const ctx4 = canvas4.getContext("2d");
-const CanPaint=new Paint(canvas4,ctx4);
+const ctx5 = canvas5.getContext("2d");
+const CanPaint=new Paint(canvas4,ctx4,canvas5, ctx5);
 CanPaint.drawLine();
